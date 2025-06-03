@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yohanna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Outfit:wght@300;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --roxo-brilho: #7209b7;
+      --azul-luz: #3f37c9;
+      --texto: #f2f2ff;
+    }
+
+     html, body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #0f0c29);
+      background-size: 400% 400%;
+      animation: backgroundAnim 15s ease infinite;
+      overflow-x: hidden;
+      color: var(--texto);
+    }
+
+    @keyframes backgroundAnim {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .main-container {
+      display: flex;
+      justify-content: center;
+      padding: -15rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+   .card-poema {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 0;
+  margin-bottom: 4em;
+  margin-top: 3em;
+  max-width: 700px;
+  width: 100%;
+  height: 650px; /* Aumentado para acomodar o player inteiro */
+  backdrop-filter: blur(12px);
+  animation: fadeUp 0.6s ease-in-out, ledGlow 4s ease-in-out infinite;
+  position: relative;
+  border: 1px solid #4a148c;
+  box-shadow:
+    0 0 4px #4a148c,
+    0 0 6px #4a148c;
+  overflow: hidden;
+}
+
+
+
+    
+@keyframes ledGlow {
+  0% {
+    box-shadow:
+      0 0 4px #4a148c,
+      0 0 6px #4a148c;
+    border-color: #4a148c;
+  }
+  50% {
+    box-shadow:
+      0 0 6px #7209b7,
+      0 0 10px #7209b7;
+    border-color: #7209b7;
+  }
+  100% {
+    box-shadow:
+      0 0 4px #4a148c,
+      0 0 6px #4a148c;
+    border-color: #4a148c;
+  }
+}
+
+
+    .poema-titulo {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2rem;
+      color: var(--roxo-brilho);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px #7209b7;
+    }
+
+   .poema-conteudo.full-spotify {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .botoes {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .btn-custom {
+      background: var(--azul-luz);
+      border: none;
+      color: white;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, var(--azul-luz), var(--roxo-brilho));
+    }
+
+    .btn-heart-absolute {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border-radius: 100px;
+}
+
+.btn-heart-absolute:hover {
+  transform: scale(1.2);
+}
+
+
+    #heart-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.97);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #fddde6;
+      font-size: 2rem;
+      text-align: center;
+      z-index: 20;
+    }
+
+    #heart-container.show {
+      display: flex;
+    }
+
+    .heart {
+      font-size: 5rem;
+      animation: pulse 1.5s infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .glitter {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #ff99cc;
+      border-radius: 50%;
+      animation: glitterFloat 10s infinite ease-in-out;
+      z-index: 21;
+    }
+
+    @keyframes glitterFloat {
+      0% { transform: translateY(0); opacity: 0.8; }
+      50% { transform: translateY(-80vh); opacity: 0.3; }
+      100% { transform: translateY(0); opacity: 0.8; }
+    }
+
+    .btn-voltar {
+      margin-top: 2rem;
+      padding: 8px 20px;
+      background: none;
+      border: 2px solid #ff99cc;
+      color: #ff99cc;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-voltar:hover {
+      background: #ff99cc;
+      color: #000;
+    }
+
+    #particles-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .spotify-player-container-discreto {
+  margin: 2rem auto 0;
+  max-width: 360px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  opacity: 1;
+  box-shadow: none;
+  transition: transform 0.3s ease;
+}
+
+.spotify-player-container-discreto:hover {
+  transform: scale(1.01);
+}
+
+
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/">Poemas</a>
+  <a href="/texto">Playlist</a>
+  <a href="/fotos">Fotos</a>
+  <button onclick="mostrarCoracao()" class="btn-heart-absolute">❤️</button>
+</nav>
+<style>
+  nav {
+  background: radial-gradient(circle at 50% 20%, rgba(114, 9, 183, 0.85), rgba(31, 0, 79, 0.75));
+  text-align: center;
+  padding: 2rem 1rem 5rem;
+  position: relative;
+  font-family: 'Outfit', sans-serif;
+  z-index: 9999;
+  clip-path: ellipse(120% 70% at 50% 0%);
+  /* box-shadow removido aqui */
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  animation: galacticGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes galacticGlow {
+  0% {
+    box-shadow: 0 0 40px rgba(114, 9, 183, 0.4), inset 0 0 20px rgba(255, 105, 180, 0.12);
+  }
+  100% {
+    box-shadow: 0 0 60px rgba(114, 9, 183, 0.6), inset 0 0 30px rgba(255, 105, 180, 0.2);
+  }
+}
+
+nav a {
+  margin: 0 1.5rem;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff99cc;
+}
+
+</style>
+
+  <div id="particles-bg"></div>
+
+  <div id="heart-container">
+  <div class="heart">❤️</div>
+  <div>I will love you until the last star fades into oblivion.</div>
+  <button class="btn-voltar" onclick="fecharCoracao()">Voltar</button>
+</div>
+
+
+
+  <div class="main-container">
+    <div class="card-poema">
+  <iframe 
+    style="border-radius: 20px; width: 100%; height: 100%; border: none;" 
+    src="https://open.spotify.com/embed/playlist/3VqmHwQxARkzSYebR7Z0Bi?utm_source=generator&theme=0" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy">
+  </iframe>
+</div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      tsParticles.load("particles-bg", {
+        fullScreen: { enable: false },
+        background: { color: { value: "#0f0c29" } },
+        particles: {
+          number: { value: 100 },
+          size: { value: { min: 1, max: 3 } },
+          move: { enable: true, speed: 0.4 },
+          color: { value: ["#ffffff", "#a26cff", "#ff99cc"] },
+          opacity: { value: 0.6 },
+          shape: { type: ["circle", "star"] }
+        },
+        interactivity: {
+          events: {
+            onHover: { enable: true, mode: "bubble" },
+            onClick: { enable: true, mode: "repulse" }
+          },
+          modes: {
+            bubble: { distance: 80, duration: 2, size: 6, opacity: 0.8 },
+            repulse: { distance: 100 }
+          }
+        }
+      });
+    });
+
+    const poemas = [];
+    let index = 0;
+
+    function atualizarPoema() {
+      const titulo = document.getElementById("titulo");
+      const texto = document.getElementById("texto");
+      titulo.style.opacity = 0;
+      texto.style.opacity = 0;
+      setTimeout(() => {
+        titulo.innerText = poemas[index].titulo;
+        texto.innerText = poemas[index].texto;
+        titulo.style.opacity = 1;
+        texto.style.opacity = 1;
+      }, 300);
+    }
+
+    function proximoPoema() {
+      index = (index + 1) % poemas.length;
+      atualizarPoema();
+    }
+
+    function anteriorPoema() {
+      index = (index - 1 + poemas.length) % poemas.length;
+      atualizarPoema();
+    }
+
+    function mostrarCoracao() {
+      const container = document.getElementById("heart-container");
+      container.classList.add("show");
+
+      for (let i = 0; i < 60; i++) {
+        const g = document.createElement("div");
+        g.className = "glitter";
+        g.style.left = Math.random() * 100 + "vw";
+        g.style.top = Math.random() * 100 + "vh";
+        g.style.animationDelay = Math.random() * 5 + "s";
+        container.appendChild(g);
+      }
+    }
+
+    function fecharCoracao() {
+      const container = document.getElementById("heart-container");
+      container.classList.remove("show");
+      const glitters = container.querySelectorAll(".glitter");
+      glitters.forEach(g => g.remove());
+    }
+
+    window.onload = atualizarPoema;
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") proximoPoema();
+      if (e.key === "ArrowLeft") anteriorPoema();
+    });
+  </script>
+</body>
+</html>
